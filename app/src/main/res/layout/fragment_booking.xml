@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    tools:context=".dashboard.booking.BookingFragment">
+
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="MyBooking"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.087" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="100dp"
+        android:src="@drawable/ic_message"
+        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:layout_marginStart="12dp"
+        android:src="@drawable/ic_btnnotifications"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_booking"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/imageView14"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/ticketbackground"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/imageView9"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/textView13"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView13" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_booking_date"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:fontFamily="@font/poppins_regular"-->
+<!--        android:text="Monday, 20 Oktober '20 - 12.33"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView14"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/imageView14"-->
+<!--        app:layout_constraintHorizontal_bias="0.095"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/imageView14"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/imageView14"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_booking_from"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:fontFamily="@font/poppins_bold"-->
+<!--        android:text="IDN"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_booking_date"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_booking_date" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView15"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:src="@drawable/ic_booking_plane"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/tv_booking_from"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tv_booking_from"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tv_booking_from"-->
+<!--        app:layout_constraintVertical_bias="0.533" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_booking_to"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:fontFamily="@font/poppins_bold"-->
+<!--        android:text="JPN"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/tv_booking_from"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imageView15"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tv_booking_from"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/view2"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:background="@color/colorGrayLine"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/imageView14"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/imageView14"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_booking_to" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_boarding_maskapai"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:fontFamily="@font/poppins_regular"-->
+<!--        android:text="Garuda Indonesia, AB 21"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_booking_from"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_booking_from" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/status"-->
+<!--        android:layout_width="89dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:text="Status"-->
+<!--        android:fontFamily="@font/poppins_regular"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_boarding_maskapai"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/view2" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_status"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="28dp"-->
+<!--        android:text="TextView"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/status"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/view2"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/status"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
