@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/btn_outline_primary"
+        android:backgroundTint="@color/colorGrayLight"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="17dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_init_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="IDN"
+                android:textColor="@android:color/black"
+                android:textSize="28dp" />
+
+            <ImageView
+                android:id="@+id/iv_plane"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="25dp"
+                android:src="@drawable/ic_booking_plane"
+                android:layout_toRightOf="@id/tv_init_from"
+                app:tint="@color/colorGrayDark2" />
+
+            <TextView
+                android:id="@+id/tv_init_destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_plane"
+                android:fontFamily="@font/poppins_bold"
+                android:text="JPN"
+                android:textColor="@android:color/black"
+                android:textSize="28dp"
+                android:layout_marginEnd="18dp"/>
+
+            <TextView
+                android:id="@+id/tv_terminal"
+                android:layout_marginTop="7dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/tv_value_terminal"
+                android:fontFamily="@font/poppins_light"
+                android:text="Terminal"
+                android:textColor="@color/colorGrayText1"
+                android:textSize="12dp" />
+            <TextView
+                android:id="@+id/tv_value_terminal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="A"
+                android:textColor="@color/colorGrayText1"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+<!--        -->
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/rl_line2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/rl_line1">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_time_from"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:text="12:33"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="12dp" />-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_init_destination"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_toRightOf="@id/iv_plane"-->
+<!--                android:fontFamily="@font/poppins_bold"-->
+<!--                android:text="JPN"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="28dp"-->
+<!--                android:layout_marginEnd="18dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_terminal"-->
+<!--                android:layout_marginTop="7dp"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_toLeftOf="@id/tv_value_terminal"-->
+<!--                android:fontFamily="@font/poppins_light"-->
+<!--                android:text="Terminal"-->
+<!--                android:textColor="@color/colorGrayText1"-->
+<!--                android:textSize="12dp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_value_terminal"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="7dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:fontFamily="@font/poppins_bold"-->
+<!--                android:text="A"-->
+<!--                android:textColor="@color/colorGrayText1"-->
+<!--                android:textSize="12dp" />-->
+
+<!--        </RelativeLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

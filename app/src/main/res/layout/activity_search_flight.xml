@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="40dp"
-            tools:context=".searchFlight.SearchFlightActivity">
+            tools:context=".flight.SearchFlightActivity">
 
             <com.joooonho.SelectableRoundedImageView
                 android:id="@+id/imageView5"

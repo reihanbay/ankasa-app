@@ -1,4 +1,4 @@
-package com.arkademy.ankasa.searchFlight
+package com.arkademy.ankasa.flight
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
