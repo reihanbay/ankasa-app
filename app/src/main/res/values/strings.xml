@@ -3,6 +3,7 @@
     <string name="login">Login</string>
     <string name="forgot">Forgot Password</string>
     <string name="signin">Sign In</string>
+    <string name="book">Book Flight</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="tap_here_for_reset">Tap Here For Reset</string>
