@@ -13,7 +13,7 @@ interface AuthApiService {
                              @Field("password") password: String?) : LoginResponse
 
     @FormUrlEncoded
-    @POST("user/register")
+    @POST("users/register")
     suspend fun registerRequest(@Field("fullname") fullname: String?,
                                 @Field("email") email: String?,
                                 @Field("password") password: String?) : RegisterResponse

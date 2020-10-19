@@ -11,6 +11,7 @@ import kotlin.coroutines.CoroutineContext
 
 class LoginViewModel: ViewModel(), CoroutineScope {
     val isLoginLiveData = MutableLiveData<Boolean>()
+    val isRegister = MutableLiveData<Boolean>()
 
     private lateinit var service: AuthApiService
     private lateinit var sharepref: PreferenceHelper
@@ -45,6 +46,11 @@ class LoginViewModel: ViewModel(), CoroutineScope {
                     sharepref.putBoolean(Constants.PREF_IS_LOGIN, true)
                     sharepref.putString(Constants.KEY_ID, response.data.idUser)
                     sharepref.putString(Constants.PREF_USERNAME, response.data.fullname)
+                    val reg = sharepref.getBoolean(Constants.PREF_REGISTER)
+                    isLoginLiveData.value = true
+                    if (reg != null) {
+                        isRegister.value = reg == true
+                    }
                 }
                 else {
                     isLoginLiveData.value = false

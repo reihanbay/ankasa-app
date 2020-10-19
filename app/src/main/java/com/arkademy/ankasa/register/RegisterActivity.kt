@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.arkademy.ankasa.FormProfileActivity
+import com.arkademy.ankasa.profile.FormProfileActivity
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ActivityRegisterBinding
 import com.arkademy.ankasa.login.LoginActivity

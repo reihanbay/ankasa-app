@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.arkademy.ankasa.utils.api.AuthApiService
+import com.arkademy.ankasa.utils.sharedpreferences.Constants
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -41,6 +42,7 @@ class RegisterViewModel: ViewModel(), CoroutineScope {
             }
             Log.d("response", "$response")
             if (response is RegisterResponse) {
+                sharepref.putBoolean(Constants.PREF_REGISTER, true)
                 isRegisterLiveData.value = response.message == "Success Register Account!"
             }
         }

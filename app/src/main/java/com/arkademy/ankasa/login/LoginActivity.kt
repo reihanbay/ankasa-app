@@ -14,6 +14,7 @@ import com.arkademy.ankasa.R
 import com.arkademy.ankasa.booking.DetailBookingActivity
 import com.arkademy.ankasa.databinding.ActivityLoginBinding
 import com.arkademy.ankasa.forgot.ForgotPassActivity
+import com.arkademy.ankasa.profile.FormProfileActivity
 import com.arkademy.ankasa.utils.api.ApiClient
 import com.arkademy.ankasa.utils.api.AuthApiService
 import com.arkademy.ankasa.utils.sharedpreferences.Constants
@@ -40,6 +41,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnLogin.setOnClickListener{
             viewModel.callAuthApi(binding.etEmail.text.toString(), binding.etPassword.text.toString())
+            moveIntent()
         }
 
         subscribeLiveData()
@@ -68,6 +70,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             } else {
                 Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
             }
+        })
+        viewModel.isRegister.observe(this, Observer {
+            if (it) {
+                startActivity(Intent(this, FormProfileActivity::class.java))
+            }
+            else {
+                moveIntent()
+            }
+
         })
     }
 

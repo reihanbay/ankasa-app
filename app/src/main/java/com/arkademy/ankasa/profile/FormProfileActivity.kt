@@ -1,8 +1,9 @@
-package com.arkademy.ankasa
+package com.arkademy.ankasa.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import com.arkademy.ankasa.R
 import kotlinx.android.synthetic.main.activity_form_profile.*
 
 class FormProfileActivity : AppCompatActivity() {
