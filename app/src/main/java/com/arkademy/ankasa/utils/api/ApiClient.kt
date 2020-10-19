@@ -41,7 +41,7 @@ class ApiClient {
             return retrofit
         }
 
-        fun getApiClient(mContext: Context): Retrofit? {
+        fun getApiClient(mContext: Context?): Retrofit? {
             retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

@@ -9,32 +9,40 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_trending_destination.view.*
 
-class TrendingAdapter(private val listDestination: ArrayList<TrendingModel>): RecyclerView.Adapter<TrendingAdapter.ExploreViewHolder>() {
-    class ExploreViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bind(destination: TrendingModel) {
+class TrendingAdapter: RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>() {
+
+    private var trendingList = ArrayList<TrendingModel>()
+
+    class TrendingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        fun bind(listTrending: TrendingModel) {
             with(itemView){
-                Glide.with(itemView)
-                    .load(destination.image)
-                    .apply(RequestOptions().override(700, 600))
+                Glide.with(itemView.context)
+                    .load("http://34.227.91.246:8080/uploads/" + listTrending.image)
+                    .apply(RequestOptions().override(600, 600))
                     .into(iv_trending_destination)
-                tv_trending_city.text = destination.city
-                tv_trending_country.text = destination.country
+                tv_trending_city.text = listTrending.city
+                tv_trending_country.text = listTrending.country
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder {
-        return ExploreViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingViewHolder {
+        return TrendingViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_trending_destination, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ExploreViewHolder, position: Int) {
-        holder.bind(listDestination[position])
+    override fun onBindViewHolder(holder: TrendingViewHolder, position: Int) {
+        holder.bind(trendingList[position])
     }
 
     override fun getItemCount(): Int {
-        return listDestination.size
+        return trendingList.size
+    }
+
+    fun setData(newTrendingList: ArrayList<TrendingModel>){
+        trendingList = newTrendingList
+        notifyDataSetChanged()
     }
 }
