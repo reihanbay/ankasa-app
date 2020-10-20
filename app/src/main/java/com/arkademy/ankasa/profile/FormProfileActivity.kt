@@ -10,7 +10,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -22,26 +21,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ActivityFormProfileBinding
+<<<<<<< HEAD
 import com.arkademy.ankasa.forgot.ForgotPassActivity
 import com.arkademy.ankasa.register.RegisterViewModel
+=======
+>>>>>>> 95e014e6cd84196250a34df0d8d184dda9481aa7
 import com.arkademy.ankasa.route.RouteApiService
 import com.arkademy.ankasa.route.RouteModel
-import com.arkademy.ankasa.route.RouteResponse
 import com.arkademy.ankasa.utils.api.ApiClient
-import com.arkademy.ankasa.utils.api.AuthApiService
 import com.arkademy.ankasa.utils.sharedpreferences.Constants
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
-import com.reginald.editspinner.EditSpinner
-import kotlinx.android.synthetic.main.activity_form_profile.*
-import kotlinx.android.synthetic.main.item_booking_ticket.view.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.create
 import okhttp3.RequestBody.Companion.toRequestBody
-import retrofit2.create
 import java.io.File
-import java.text.FieldPosition
 
 class FormProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormProfileBinding

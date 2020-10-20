@@ -15,7 +15,6 @@ import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.FragmentProfileBinding
 import com.arkademy.ankasa.login.LoginActivity
 import com.arkademy.ankasa.utils.api.ApiClient
-import com.arkademy.ankasa.utils.api.AuthApiService
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
 import com.squareup.picasso.Picasso
 

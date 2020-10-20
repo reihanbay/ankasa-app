@@ -1,5 +1,6 @@
-package com.arkademy.ankasa.utils.api
+package com.arkademy.ankasa.utils.api.services
 
+import com.arkademy.ankasa.dashboard.explore.LocationResponse
 import com.arkademy.ankasa.dashboard.explore.TopDestinationResponse
 import com.arkademy.ankasa.dashboard.explore.TrendingResponse
 import retrofit2.Response
@@ -12,4 +13,7 @@ interface ExploreService {
 
     @GET("route/top10")
     suspend fun getAllTopDest(): Response<TopDestinationResponse>
+
+    @GET("route")
+    suspend fun getAllLocation(): Response<LocationResponse>
 }

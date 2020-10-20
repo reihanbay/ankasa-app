@@ -17,12 +17,11 @@
         <activity android:name=".flight.FlightDetailActivity">
 
         </activity>
-        <activity android:name=".flight.SearchResultActivity">
-
-        </activity>
+        <activity android:name=".flight.SearchResultActivity"/>
         <activity android:name=".booking.DetailBookingActivity" />
         <activity android:name=".profile.FormProfileActivity" />
         <activity android:name=".flight.SearchFlightActivity" >
+
         </activity>
         <activity android:name=".forgot.ForgotPassActivity" />
         <activity android:name=".register.RegisterActivity" />

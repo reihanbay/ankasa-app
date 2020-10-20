@@ -7,10 +7,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ItemRecyclerFlightBinding
+import com.arkademy.ankasa.utils.api.model.getFlightModel
 
-class SearchResultAdapter(var items: ArrayList<flightModel>, val listener: onClickViewListener) :
+class SearchResultAdapter(val child: Int, val adults: Int, var items: ArrayList<getFlightModel>, val listener: onClickViewListener) :
     RecyclerView.Adapter<SearchResultAdapter.searchResultViewHolder>() {
 
+    fun addList(list: List<getFlightModel>){
+        items.clear()
+        items.addAll(list)
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): searchResultViewHolder {
         return searchResultViewHolder(
             DataBindingUtil.inflate(
@@ -23,7 +29,7 @@ class SearchResultAdapter(var items: ArrayList<flightModel>, val listener: onCli
     }
 
     interface onClickViewListener {
-        fun onClick(string: String)
+        fun onClick(id: Int)
     }
 
     class searchResultViewHolder(val binding: ItemRecyclerFlightBinding) :
@@ -31,16 +37,21 @@ class SearchResultAdapter(var items: ArrayList<flightModel>, val listener: onCli
 
     override fun onBindViewHolder(holder: searchResultViewHolder, position: Int) {
         val item = items[position]
-        holder.binding.tvInitFrom.text = item.from
-        holder.binding.tvInitDestination.text = item.destination
+        holder.binding.tvInitFrom.text = item.initOrigin
+        holder.binding.tvInitDestination.text = item.initDestination
         holder.binding.tvTimeFrom.text = item.timeFrom
         holder.binding.tvTimeDestination.text = item.timeDestination
         holder.binding.tvValueTerminal.text = item.terminal
-        holder.binding.tvValueGate.text = item.gate
-        holder.binding.tvPlaneFlight.text = item.flight
-        holder.binding.tvPrice.text = "$ ${(item.priceAdults * item.priceChild).toDouble()}"
+
+//        val gateSplit = item.codeFlight.split("")
+//        val gateCount = gateSplit.size
+//        var arr : ArrayList<String>
+//        for (gateCount)
+        holder.binding.tvValueGate.text = item.codeFlight
+        holder.binding.tvPlaneFlight.text = item.nameFlight
+        holder.binding.tvPrice.text = "$ ${((adults * item.adult.toInt()) + (child * item.child.toInt())).toDouble()}"
         holder.binding.containerRecycler.setOnClickListener {
-            listener.onClick(item.flight)
+            listener.onClick(item.idAirlines)
         }
 
     }

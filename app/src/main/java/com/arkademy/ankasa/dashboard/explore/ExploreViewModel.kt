@@ -1,12 +1,10 @@
 package com.arkademy.ankasa.dashboard.explore
 
-import android.content.Context
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arkademy.ankasa.utils.api.ApiClient
-import com.arkademy.ankasa.utils.api.ExploreService
+import com.arkademy.ankasa.utils.api.services.ExploreService
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -15,10 +13,11 @@ class ExploreViewModel: ViewModel() {
 
     val responseTrendingDestination: MutableLiveData<Response<TrendingResponse>> = MutableLiveData()
     val responseTopDestination: MutableLiveData<Response<TopDestinationResponse>> = MutableLiveData()
+    val responseLocation: MutableLiveData<Response<LocationResponse>> = MutableLiveData()
 
     fun getTrendingDestination() {
         viewModelScope.launch {
-            val response = ApiClient.getApiClient(null)?.create(ExploreService::class.java)?.getAllTrendingDest()
+            val response = ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllTrendingDest()
             if (response!!.isSuccessful) {
                 responseTrendingDestination.value = response
             } else {
@@ -29,11 +28,22 @@ class ExploreViewModel: ViewModel() {
 
     fun getTopDestination() {
         viewModelScope.launch {
-            val response = ApiClient.getApiClient(null)?.create(ExploreService::class.java)?.getAllTopDest()
+            val response = ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllTopDest()
             if (response!!.isSuccessful) {
                 responseTopDestination.value = response
             } else {
                 responseTopDestination.value = response.errorBody() as Response<TopDestinationResponse>
+            }
+        }
+    }
+
+    fun getLocation(){
+        viewModelScope.launch {
+            val response = ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllLocation()
+            if (response!!.isSuccessful) {
+                responseLocation.value = response
+            } else {
+                responseLocation.value = response.errorBody() as Response<LocationResponse>
             }
         }
     }
