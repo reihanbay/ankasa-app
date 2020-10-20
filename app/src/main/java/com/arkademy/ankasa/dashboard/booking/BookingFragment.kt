@@ -1,18 +1,32 @@
 package com.arkademy.ankasa.dashboard.booking
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.ankasa.R
+import com.arkademy.ankasa.booking.DetailBookingActivity
+import com.arkademy.ankasa.utils.sharedpreferences.Constants
+import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
+import kotlinx.android.synthetic.main.activity_detail_booking.*
 import kotlinx.android.synthetic.main.fragment_booking.*
 
 class BookingFragment : Fragment() {
 
-    private lateinit var adapter: BookingAdapter
+    private lateinit var pref: PreferenceHelper
+    private lateinit var viewModel: BookingUserViewModel
+    private lateinit var adapter: BookingUserByIdAdapter
+
+    companion object {
+        const val GET_INTENT = "0000"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,12 +37,35 @@ class BookingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        BookingModel.getBookingList()
-        setRecyclerView()
+        pref = PreferenceHelper(context!!)
+        adapter = BookingUserByIdAdapter{
+            val intent = Intent(activity, DetailBookingActivity::class.java)
+            intent.putExtra(GET_INTENT, it)
+            startActivity(intent)
+        }
+        viewModel = BookingUserViewModel()
+        setRecylerView()
+        val idUser = pref.getString(Constants.KEY_ID)!!.toInt()
+        val bookingId = pref.getString(Constants.PREF_CUSTOMER)
+        Log.d("bookingId", bookingId.toString())
+
+        viewModel.getBookingUserById(3)
+        viewModel.responseBookingUserById.observe(this, { response ->
+            val listBookingUser: List<BookingUserByIdModel>? = response.body()?.data?.map {
+                BookingUserByIdModel(it.code, it.init_destination, it.init_origin, it.name_airlines, it.status, it.time_departure, it.time_from, it.total_price)
+            }
+            adapter.setData(listBookingUser as ArrayList<BookingUserByIdModel>)
+        })
+
+//        viewModel.getBookingDetail(5)
+//        viewModel.responseBookingDetail.observe(this, {response->
+//            val bookingDetail = response.body()?.data
+//            tv_passenger.text = bookingDetail?.fullname
+//        })
     }
 
-    private fun setRecyclerView() {
-        rv_booking.adapter = BookingAdapter(BookingModel.getBookingList())
+    private fun setRecylerView() {
+        rv_booking.adapter = adapter
         rv_booking.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
     }
 }
