@@ -19,7 +19,28 @@ class ApiClient {
             }
         }
 
-        fun getApiClientToken(mContext: Context?): Retrofit? {
+        fun getApiClientToken(mContext: Context): Retrofit? {
+            if (retrofit == null) {
+                val okHttpClient =
+                    OkHttpClient
+                        .Builder()
+                        .addInterceptor(provideHttpLoggingInterceptor())
+                        .addInterceptor(HeaderInterceptor(mContext))
+                        .connectTimeout(1, TimeUnit.MINUTES)
+                        .readTimeout(1, TimeUnit.MINUTES)
+                        .writeTimeout(1, TimeUnit.MINUTES)
+                        .build()
+
+                retrofit = Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(okHttpClient)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            }
+            return retrofit
+        }
+
+        fun getApiClientTokenNullEx(mContext: Context?): Retrofit? {
             if (retrofit == null) {
                 val okHttpClient =
                     OkHttpClient
@@ -37,7 +58,6 @@ class ApiClient {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }
-
             return retrofit
         }
 

@@ -63,9 +63,9 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             }
             search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(p0: String?): Boolean {
-                    val search = p0!!.toUpperCase()
+                    val search = p0!!.capitalize()
                     for(item in listLocation) {
-                        if (item.city.toUpperCase() == search) {
+                        if (item.city.capitalize() == search) {
                             val intent = Intent(activity, SearchFlightActivity::class.java)
                             intent.putExtra(INTENT_KEY, search)
                             startActivity(intent)

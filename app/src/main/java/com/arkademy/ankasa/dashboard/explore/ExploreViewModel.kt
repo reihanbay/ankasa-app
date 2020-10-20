@@ -17,7 +17,7 @@ class ExploreViewModel: ViewModel() {
 
     fun getTrendingDestination() {
         viewModelScope.launch {
-            val response = ApiClient.getApiClientToken(null)?.create(ExploreService::class.java)?.getAllTrendingDest()
+            val response = ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllTrendingDest()
             if (response!!.isSuccessful) {
                 responseTrendingDestination.value = response
             } else {
@@ -28,7 +28,7 @@ class ExploreViewModel: ViewModel() {
 
     fun getTopDestination() {
         viewModelScope.launch {
-            val response = ApiClient.getApiClientToken(null)?.create(ExploreService::class.java)?.getAllTopDest()
+            val response = ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllTopDest()
             if (response!!.isSuccessful) {
                 responseTopDestination.value = response
             } else {
@@ -39,7 +39,7 @@ class ExploreViewModel: ViewModel() {
 
     fun getLocation(){
         viewModelScope.launch {
-            val response = ApiClient.getApiClientToken(null)?.create(ExploreService::class.java)?.getAllLocation()
+            val response = ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllLocation()
             if (response!!.isSuccessful) {
                 responseLocation.value = response
             } else {

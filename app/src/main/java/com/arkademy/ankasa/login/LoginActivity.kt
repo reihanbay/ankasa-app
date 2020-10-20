@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.arkademy.ankasa.MainActivity
 import com.arkademy.ankasa.R
-import com.arkademy.ankasa.booking.DetailBookingActivity
 import com.arkademy.ankasa.databinding.ActivityLoginBinding
 import com.arkademy.ankasa.forgot.ForgotPassActivity
 import com.arkademy.ankasa.profile.FormProfileActivity
@@ -19,7 +18,6 @@ import com.arkademy.ankasa.utils.api.ApiClient
 import com.arkademy.ankasa.utils.api.AuthApiService
 import com.arkademy.ankasa.utils.sharedpreferences.Constants
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityLoginBinding

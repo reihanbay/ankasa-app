@@ -8,13 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.arkademy.ankasa.profile.FormProfileActivity
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ActivitySearchResultBinding
 import com.arkademy.ankasa.utils.api.ApiClient
+import com.arkademy.ankasa.utils.api.model.getFlightModel
 import com.arkademy.ankasa.utils.api.services.flightApiService
 import com.arkademy.ankasa.utils.parcelize.SearchDataParcelize
-import retrofit2.create
 
 class SearchResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchResultBinding
@@ -39,12 +38,10 @@ class SearchResultActivity : AppCompatActivity() {
         binding.tvCountryDestination.text = dataSearch.countryDestination
         binding.tvValuePassenger.text = "${dataSearch.child} Child ${dataSearch.adults} Adults"
         binding.tvValueClass.text = dataSearch.classFlight
-//        val child = 1
-//        val adults = 1
+
         val child = dataSearch.child.toInt()
         val adults = dataSearch.adults.toInt()
         viewModel.callFlightService(dataSearch.cityOrigin, dataSearch.cityDestination,dataSearch.departure,dataSearch.classFlight)
-//        binding.tvCountFlight.text= recyclerAdapter.itemCount.toString() + "Flight Found"
         subscribeLiveData()
         setRecyclerView(child, adults)
 
@@ -52,12 +49,15 @@ class SearchResultActivity : AppCompatActivity() {
 
     private fun setRecyclerView(child: Int, adults: Int){
         recyclerAdapter = SearchResultAdapter(child, adults, arrayListOf(), object : SearchResultAdapter.onClickViewListener{
-            override fun onClick(string: String) {
+            override fun onClick(id: Int) {
                 val intent = Intent(this@SearchResultActivity, FlightDetailActivity::class.java)
+                intent.putExtra("idFlight", id.toString())
+                intent.putExtra("child", child)
+                intent.putExtra("adults", adults)
                 startActivity(intent)
             }
         })
-
+        binding.tvCountFlight.text= "${recyclerAdapter.items.size} Flight Found "
         binding.rvFlight.adapter = recyclerAdapter
         binding.rvFlight.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }

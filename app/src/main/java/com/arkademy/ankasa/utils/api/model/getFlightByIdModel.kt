@@ -1,11 +1,13 @@
 package com.arkademy.ankasa.utils.api.model
 
-data class getFlightModel(
+data class getFlightByIdModel(
     val idAirlines: Int,
     val nameFlight: String,
     val child: String,
     val adult: String,
     val codeFlight: String,
+    val idRouteOrigin: String,
+    val idRouteDestination: String,
     val initOrigin: String,
     val initDestination: String,
     val timeFrom: String,
@@ -14,8 +16,7 @@ data class getFlightModel(
     val classFlight: String,
     val facilities: String,
     val departure: String,
-    val cityOrigin: String,
-    val cityDestination: String,
-    val countryOrigin: String,
-    val countryDestination: String
+    val image: String,
+    val createAt: String,
+    val updateAt: String,
 )

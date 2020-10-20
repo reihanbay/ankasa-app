@@ -29,7 +29,7 @@ class SearchResultAdapter(val child: Int, val adults: Int, var items: ArrayList<
     }
 
     interface onClickViewListener {
-        fun onClick(string: String)
+        fun onClick(id: Int)
     }
 
     class searchResultViewHolder(val binding: ItemRecyclerFlightBinding) :
@@ -51,7 +51,7 @@ class SearchResultAdapter(val child: Int, val adults: Int, var items: ArrayList<
         holder.binding.tvPlaneFlight.text = item.nameFlight
         holder.binding.tvPrice.text = "$ ${((adults * item.adult.toInt()) + (child * item.child.toInt())).toDouble()}"
         holder.binding.containerRecycler.setOnClickListener {
-            listener.onClick(item.codeFlight)
+            listener.onClick(item.idAirlines)
         }
 
     }

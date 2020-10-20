@@ -21,11 +21,7 @@
         <activity android:name=".booking.DetailBookingActivity" />
         <activity android:name=".profile.FormProfileActivity" />
         <activity android:name=".flight.SearchFlightActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".forgot.ForgotPassActivity" />
         <activity android:name=".register.RegisterActivity" />
@@ -33,7 +29,11 @@
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

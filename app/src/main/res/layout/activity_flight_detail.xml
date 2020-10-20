@@ -136,6 +136,7 @@
                     android:layout_marginVertical="25dp">
 
                     <ImageView
+                        android:id="@+id/iv_flight"
                         android:layout_width="75dp"
                         android:layout_height="43dp"
                         android:layout_alignParentStart="true"
@@ -209,6 +210,7 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_code"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato_bold"
@@ -233,6 +235,7 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_value_class"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato_bold"
@@ -258,6 +261,8 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_value_terminal"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato_bold"
@@ -282,6 +287,7 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_value_gate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/lato_bold"
@@ -393,6 +399,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Total you'll pay"/>
             <TextView
+                android:id="@+id/tv_priceTotal"
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
