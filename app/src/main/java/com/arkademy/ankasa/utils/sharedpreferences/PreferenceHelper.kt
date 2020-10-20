@@ -14,7 +14,7 @@ class PreferenceHelper(context: Context) {
         editor = sharedprefrences.edit()
     }
 
-    fun putString(key: String, value: String) {
+    fun putString(key: String, value: String?) {
         editor.putString(key, value)
             .apply()
     }

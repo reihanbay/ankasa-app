@@ -3,8 +3,8 @@ package com.arkademy.ankasa.flight
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.arkademy.ankasa.FormProfileActivity
 import com.arkademy.ankasa.R
+import com.arkademy.ankasa.profile.FormProfileActivity
 import kotlinx.android.synthetic.main.activity_search_flight.*
 
 class SearchFlightActivity : AppCompatActivity() {

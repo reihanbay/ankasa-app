@@ -38,7 +38,7 @@ class ProfileViewModel: ViewModel() {
                 call: Call<ProfileResponse>,
                 response: Response<ProfileResponse>
             ) {
-                Log.d("response profile", "${response.body()}")
+//                Log.d("response profile", "${response.body()}")
                 isResponseProfile.value = response.body()
             }
 
