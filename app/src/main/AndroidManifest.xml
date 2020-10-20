@@ -18,16 +18,16 @@
 
         </activity>
         <activity android:name=".flight.SearchResultActivity">
-
-        </activity>
-        <activity android:name=".booking.DetailBookingActivity" />
-        <activity android:name=".FormProfileActivity" />
-        <activity android:name=".flight.SearchFlightActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".booking.DetailBookingActivity" />
+        <activity android:name=".FormProfileActivity" />
+        <activity android:name=".flight.SearchFlightActivity" >
+
         </activity>
         <activity android:name=".forgot.ForgotPassActivity" />
         <activity android:name=".register.RegisterActivity" />
