@@ -19,13 +19,13 @@ class ApiClient {
             }
         }
 
-        fun getApiClientToken(mContext: Context): Retrofit? {
+        fun getApiClientToken(mContext: Context?): Retrofit? {
             if (retrofit == null) {
                 val okHttpClient =
                     OkHttpClient
                         .Builder()
                         .addInterceptor(provideHttpLoggingInterceptor())
-                        .addInterceptor(HeaderInterceptor(mContext))
+                        .addInterceptor(HeaderInterceptor(mContext!!))
                         .connectTimeout(1, TimeUnit.MINUTES)
                         .readTimeout(1, TimeUnit.MINUTES)
                         .writeTimeout(1, TimeUnit.MINUTES)
