@@ -18,6 +18,7 @@ class TrendingAdapter: RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>(
             with(itemView){
                 Glide.with(itemView.context)
                     .load("http://34.227.91.246:8080/uploads/" + listTrending.image)
+                    .placeholder(R.drawable.default_placeholder_image)
                     .apply(RequestOptions().override(600, 600))
                     .into(iv_trending_destination)
                 tv_trending_city.text = listTrending.city
