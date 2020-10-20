@@ -3,12 +3,10 @@ package com.arkademy.ankasa.flight
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.arkademy.ankasa.FormProfileActivity
+import com.arkademy.ankasa.profile.FormProfileActivity
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ActivitySearchResultBinding
 import com.arkademy.ankasa.utils.parcelize.SearchDataParcelize

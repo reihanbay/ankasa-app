@@ -1,13 +1,13 @@
 package com.arkademy.ankasa.flight
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +16,8 @@ import com.arkademy.ankasa.databinding.ActivitySearchFlightBinding
 import com.arkademy.ankasa.utils.api.ApiClient
 import com.arkademy.ankasa.utils.api.services.CityService
 import com.arkademy.ankasa.utils.parcelize.SearchDataParcelize
+import com.arkademy.ankasa.profile.FormProfileActivity
+import kotlinx.android.synthetic.main.activity_search_flight.*
 
 class SearchFlightActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySearchFlightBinding

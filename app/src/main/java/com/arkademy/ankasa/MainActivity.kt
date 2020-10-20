@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.arkademy.ankasa.dashboard.explore.ExploreFragment
-import com.arkademy.ankasa.dashboard.ProfileFragment
+import com.arkademy.ankasa.profile.ProfileFragment
 import com.arkademy.ankasa.dashboard.booking.BookingFragment
 import com.arkademy.ankasa.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*

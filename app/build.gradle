@@ -98,4 +98,7 @@ dependencies {
     // Custom editable spinner
     implementation 'com.reginald:editspinner:1.1.0'
 
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }
