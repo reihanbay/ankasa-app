@@ -22,6 +22,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var sharePreferencesHelper: PreferenceHelper
     private lateinit var viewModel: RegisterViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
@@ -60,6 +61,14 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 finish()
             } else {
                 Toast.makeText(this, "Register Failed", Toast.LENGTH_SHORT).show()
+            }
+        })
+        viewModel.isToast.observe(this, Observer {
+            if (it){
+
+            }
+            else {
+                Toast.makeText(this, "Fill The Blank", Toast.LENGTH_SHORT).show()
             }
         })
     }

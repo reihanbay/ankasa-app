@@ -230,6 +230,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:hint="Post Code"
+                    android:inputType="number"
                     android:textColorHighlight="@color/colorPrimary"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="253dp" />
