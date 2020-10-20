@@ -21,6 +21,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ActivityFormProfileBinding
+import com.arkademy.ankasa.forgot.ForgotPassActivity
+import com.arkademy.ankasa.login.LoginActivity
+import com.arkademy.ankasa.register.RegisterViewModel
 import com.arkademy.ankasa.route.RouteApiService
 import com.arkademy.ankasa.route.RouteModel
 import com.arkademy.ankasa.utils.api.ApiClient
@@ -33,13 +36,11 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 class FormProfileActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityFormProfileBinding
-    private lateinit var sharePreferencesHelper: PreferenceHelper
+    private lateinit var sharedpref: PreferenceHelper
     private lateinit var viewModel: FormProfileViewModel
+
     private var img: MultipartBody.Part? = null
-
-
     private var selectedLoc = ""
 
     companion object {
@@ -50,19 +51,15 @@ class FormProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_form_profile)
-        viewModel = ViewModelProvider(this).get(FormProfileViewModel::class.java)
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_form_profile)
-        sharePreferencesHelper = PreferenceHelper(this)
-        viewModel.setSharedPreference(sharePreferencesHelper)
+        sharedpref = PreferenceHelper(applicationContext)
 
         val service = ApiClient.getApiClientToken(this)?.create(ProfileAPIService::class.java)
         val serviceRoute = ApiClient.getApiClientToken(this)?.create(RouteApiService::class.java)
 
+        viewModel = ViewModelProvider(this).get(FormProfileViewModel::class.java)
 
-        viewModel.setSharedPreference(sharePreferencesHelper)
+        viewModel.setSharedPreference(sharedpref)
 
         if (service != null) {
             viewModel.setProfileService(service)
@@ -71,43 +68,6 @@ class FormProfileActivity : AppCompatActivity() {
         if (serviceRoute != null) {
             viewModel.setRouteService(serviceRoute)
         }
-        binding.tvChangeProfilePhoto.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                    requestPermissions(permissions, FormProfileActivity.PERMISSION_CODE)
-                }
-                else {
-                    pickImgGallery()
-                }
-            } else {
-                pickImgGallery()
-            }
-        }
-
-//        Log.d("idUser", "$idUser")
-//        val b = binding.etProfileUsername.text.toString()
-//        val c = binding.etProfilePhone.text.toString()
-//        val d = binding.etProfileAdress.text.toString()
-//        val e = binding.etProfilePostCode.text.toString()
-//        Log.d("selectedloc", "$selectedLoc")
-//        Log.d("username", "$b")
-//        Log.d("phone", "$c")
-//        Log.d("addredd", "$d")
-//        Log.d("postcode", "$e")
-//
-//        binding.btnSubmit.setOnClickListener {
-//            viewModel.callPostProfile(
-//                createPartFromString(idUser),
-//                createPartFromString("5"),
-//                createPartFromString("zakiz"),
-//                createPartFromString("087777"),
-//                createPartFromString("ponorogo"),
-//                createPartFromString("98888"),
-//                img
-//                )
-//
-//        }
 
             viewModel.initSpinnerLoc()
             setUpView()
@@ -116,28 +76,27 @@ class FormProfileActivity : AppCompatActivity() {
 
     }
 
+
     private fun setUpView() {
-        val register = sharePreferencesHelper.getBoolean(Constants.PREF_REGISTER)
+        val register = sharedpref.getBoolean(Constants.PREF_REGISTER)
 
         when (register) {
             true -> {
-                binding.btnSave.visibility = View.GONE
-                binding.btnSubmit.visibility = View.VISIBLE
-
+                    binding.btnSave.visibility = View.GONE
+                    binding.btnSubmit.visibility = View.VISIBLE
             }
             else -> {
-                binding.btnSave.visibility = View.VISIBLE
-                binding.btnSubmit.visibility = View.GONE
-
+                    binding.btnSave.visibility = View.VISIBLE
+                    binding.btnSubmit.visibility = View.GONE
             }
         }
     }
 
     private fun setUpListener(){
-        val idUser = sharePreferencesHelper.getString(Constants.KEY_ID).toString()
         binding.btnSubmit.setOnClickListener {
+            val idUser = sharedpref.getString(Constants.KEY_ID)
             viewModel.callPostProfile(
-                createPartFromString(idUser),
+                createPartFromString("$idUser"),
                 createPartFromString(selectedLoc),
                 createPartFromString(binding.etProfileUsername.text.toString()),
                 createPartFromString(binding.etProfilePhone.text.toString()),
@@ -145,10 +104,24 @@ class FormProfileActivity : AppCompatActivity() {
                 createPartFromString(binding.etProfilePostCode.text.toString()),
                 img
             )
+        }
+        binding.tvChangeProfilePhoto.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permissions, PERMISSION_CODE)
+                } else {
+                    pickImgGallery()
+                }
+            } else {
+                pickImgGallery()
+            }
         }
         binding.btnSave.setOnClickListener {
-            viewModel.updateProfile(
-                createPartFromString(idUser),
+            Toast.makeText(this, "Profile Update", Toast.LENGTH_SHORT).show()
+            val idUser = sharedpref.getString(Constants.KEY_ID)
+            viewModel.callUpdateProfile(
+                createPartFromString("${idUser}"),
                 createPartFromString(selectedLoc),
                 createPartFromString(binding.etProfileUsername.text.toString()),
                 createPartFromString(binding.etProfilePhone.text.toString()),
@@ -159,57 +132,54 @@ class FormProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun subcribeLiveData() {
-        val spinner = binding.etProfileCity  as Spinner
-        viewModel.isResponseSpinner.observe(this, Observer {
-            val listLoc = it.data?.map {
-                RouteModel(
-                    it.idRoutes,
-                    it.city
-                )
-            } ?: listOf()
-            val adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, listLoc.map {
-                it.city
-            })
-            binding.etProfileCity.setAdapter(adapter)
-            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-                override fun onNothingSelected(p0: AdapterView<*>?) { }
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    selectedLoc = listLoc[position].id_route.toString()
-                    Toast.makeText(this@FormProfileActivity, "$selectedLoc", Toast.LENGTH_SHORT).show()
-                }
+    private fun subcribeLiveData(){
+        viewModel.isFormProfile.observe(this, Observer {
+            if (it) {
+                sharedpref.putBoolean(Constants.PREF_SUBMIT, true)
+                Toast.makeText(this, "Profile Data Sent!", Toast.LENGTH_SHORT).show()
+                sharedpref.clear()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+            else {
+                Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show()
             }
         })
-                viewModel.isUpdateProfile.observe(this, Observer {
-                    if (it) {
-                        Toast.makeText(this, "Data Update!", Toast.LENGTH_SHORT).show()
-                        finish()
-                    } else {
-                        Toast.makeText(this, "Update Failed!", Toast.LENGTH_SHORT).show()
-                    }
-                })
-                viewModel.isFormProfile.observe(this, Observer {
-                    if (it) {
-                        Toast.makeText(this, "Data Sent!", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                    else {
-                        Toast.makeText(this, "FAILED", Toast.LENGTH_SHORT).show()
-                    }
-                })
+        viewModel.isResponseSpinner.observe(this, Observer {
+            val list = it.data?.map {
+                RouteModel(it.idRoutes.orEmpty(), it.city.orEmpty())
+            } ?: listOf()
+            val spinner = binding.etProfileCity
+            spinner.adapter = ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, list.map {
+                it.city
+            })
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    selectedLoc = list[position].id_route.toString()
+                }
+
+            }
+        })
+
+        viewModel.isUpdateProfile.observe(this, Observer {
+            if(it) {
+                Toast.makeText(this, "Data Updated!", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Failed Updated!", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
-    private fun pickImgGallery(){
+
+    private fun pickImgGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, FormProfileActivity.IMAGE_PICK_CODE)
+        startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
     override fun onRequestPermissionsResult(
@@ -218,7 +188,7 @@ class FormProfileActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         when (requestCode) {
-            FormProfileActivity.PERMISSION_CODE -> {
+            PERMISSION_CODE -> {
                 if (grantResults.size > 0 && grantResults [0] == PackageManager.PERMISSION_GRANTED) {
                     pickImgGallery()
                 }
@@ -231,7 +201,7 @@ class FormProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == FormProfileActivity.IMAGE_PICK_CODE) {
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             binding.etImage.setImageURI(data?.data)
             val filePath = getPath(this, data?.data)
             val file = File(filePath)

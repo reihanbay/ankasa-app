@@ -12,6 +12,8 @@ import kotlin.coroutines.CoroutineContext
 class LoginViewModel: ViewModel(), CoroutineScope {
     val isLoginLiveData = MutableLiveData<Boolean>()
     val isRegister = MutableLiveData<Boolean>()
+    val isResponse = MutableLiveData<Boolean>()
+    val isToast = MutableLiveData<Boolean>()
 
     private lateinit var service: AuthApiService
     private lateinit var sharepref: PreferenceHelper
@@ -40,21 +42,30 @@ class LoginViewModel: ViewModel(), CoroutineScope {
                 }
             }
             if (response is LoginResponse) {
+                isResponse.value = true
                 Log.d("response", "${response.data}")
-                if (response.data?.userRole == 1) {
-                    sharepref.putString(Constants.KEY_TOKEN, response.data.token)
-                    sharepref.putBoolean(Constants.PREF_IS_LOGIN, true)
-                    sharepref.putString(Constants.KEY_ID, response.data.idUser)
-                    sharepref.putString(Constants.PREF_USERNAME, response.data.fullname)
-                    val reg = sharepref.getBoolean(Constants.PREF_REGISTER)
-                    isLoginLiveData.value = true
-                    if (reg != null) {
-                        isRegister.value = reg == true
+                if (email.isNotEmpty() && password.isNotEmpty()) {
+                    isToast.value = true
+                    if (response.data?.userRole == 1) {
+                        sharepref.putString(Constants.KEY_TOKEN, response.data.token)
+                        sharepref.putBoolean(Constants.PREF_IS_LOGIN, true)
+                        sharepref.putString(Constants.KEY_ID, response.data.idUser)
+                        sharepref.putString(Constants.PREF_USERNAME, response.data.fullname)
+                        val reg = sharepref.getBoolean(Constants.PREF_REGISTER)
+                        isLoginLiveData.value = true
+                        if (reg != null) {
+                            isRegister.value = reg == true
+                        }
+                    } else {
+                        isLoginLiveData.value = false
                     }
+                } else {
+                    isToast.value = false
                 }
-                else {
-                    isLoginLiveData.value = false
-                }
+            }
+
+            else {
+                isResponse.value = false
             }
         }
     }

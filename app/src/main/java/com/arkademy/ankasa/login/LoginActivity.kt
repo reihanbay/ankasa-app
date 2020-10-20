@@ -19,14 +19,17 @@ import com.arkademy.ankasa.utils.api.AuthApiService
 import com.arkademy.ankasa.utils.sharedpreferences.Constants
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
     private lateinit var sharepref: PreferenceHelper
     private lateinit var viewModel: LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_login)
-        binding.tvReset.setOnClickListener(this)
+
+        binding.tvReset.setOnClickListener{
+            moveReset()
+        }
 
         sharepref = PreferenceHelper(this)
         val service = ApiClient.getApiClientToken(this)?.create(AuthApiService::class.java)
@@ -39,7 +42,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnLogin.setOnClickListener{
             viewModel.callAuthApi(binding.etEmail.text.toString(), binding.etPassword.text.toString())
-            moveIntent()
         }
 
         subscribeLiveData()
@@ -50,10 +52,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         finish()
     }
 
+    private fun moveReset() {
+        startActivity(Intent(this, ForgotPassActivity::class.java))
+        finish()
+    }
+
     override fun onStart() {
         super.onStart()
         if (sharepref.getBoolean(Constants.PREF_IS_LOGIN)!!) {
-            moveIntent()
+           finish()
         }
     }
 
@@ -69,6 +76,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
             }
         })
+        viewModel.isResponse.observe(this, Observer {
+            if (it) {
+
+            }
+            else {
+                Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
+            }
+        })
         viewModel.isRegister.observe(this, Observer {
             if (it) {
                 startActivity(Intent(this, FormProfileActivity::class.java))
@@ -78,14 +93,29 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         })
+        viewModel.isToast.observe(this, Observer {
+            if (it) {
+
+            }
+
+            else {
+                Toast.makeText(this, "Fill The Blank!", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        }
+
     }
 
-    override fun onClick(v: View?) {
-        when(v) {
-            binding.tvReset -> {
-                val intent = Intent(this, ForgotPassActivity::class.java)
-                startActivity(intent)
-            }
-        }
-    }
-}
+//    override fun onClick(v: View?) {
+//        when(v) {
+//            binding.tvReset -> {
+//                val intent = Intent(this, ForgotPassActivity::class.java)
+//                startActivity(intent)
+//            }
+//            binding.btnLogin -> {
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
+//            }
+//        }
+//    }

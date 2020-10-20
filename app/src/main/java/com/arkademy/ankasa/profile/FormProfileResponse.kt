@@ -3,7 +3,8 @@ package com.arkademy.ankasa.profile
 
 import com.google.gson.annotations.SerializedName
 
-data class FormProfileResponse(val success: String, val message: String, val data: DataResult?) {
+data class FormProfileResponse(val success: String?, val message: String, val data: DataResult?) {
+
     data class DataResult (
         @SerializedName("address")
         val address: String,

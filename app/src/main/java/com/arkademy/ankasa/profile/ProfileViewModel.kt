@@ -38,7 +38,10 @@ class ProfileViewModel: ViewModel() {
                 call: Call<ProfileResponse>,
                 response: Response<ProfileResponse>
             ) {
-//                Log.d("response profile", "${response.body()}")
+                Log.d("idcuss", "${response.body()?.data?.idCustomer}")
+                val a = sharepref.putString(Constants.PREF_CUSTOMER, response.body()?.data?.idCustomer)
+                Log.d("idcusssss", "$a")
+                Log.d("responseget", "${response.body()}")
                 isResponseProfile.value = response.body()
             }
 
