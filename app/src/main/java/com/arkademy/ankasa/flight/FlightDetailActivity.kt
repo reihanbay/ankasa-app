@@ -1,5 +1,6 @@
 package com.arkademy.ankasa.flight
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +8,14 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.arkademy.ankasa.MainActivity
 import com.arkademy.ankasa.R
+import com.arkademy.ankasa.dashboard.booking.BookingFragment
 import com.arkademy.ankasa.databinding.ActivityFlightDetailBinding
 import com.arkademy.ankasa.utils.api.ApiClient
+import com.arkademy.ankasa.utils.api.services.BookingService
 import com.arkademy.ankasa.utils.api.services.flightApiService
 import com.arkademy.ankasa.utils.sharedpreferences.Constants
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
@@ -19,15 +25,21 @@ class FlightDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFlightDetailBinding
     private lateinit var viewModel: FlightDetailViewModel
     private lateinit var sharedPref : PreferenceHelper
-    var idAirlines : Int? = 0
-    var totalPrice : Int? = 0
+    private lateinit var recyclerFacility : FacilityAdapter
+    var intentMain = MainActivity()
+    var idAirlines : Int? = null
+    var totalPrice : Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_flight_detail)
         viewModel = ViewModelProvider(this).get(FlightDetailViewModel::class.java)
-        val service = ApiClient.getApiClientToken(this)?.create(flightApiService::class.java)
-        if (service != null) {
-            viewModel.setGetService(service)
+        val serviceGet = ApiClient.getApiClientToken(this)?.create(flightApiService::class.java)
+        val servicePost = ApiClient.getApiClientToken(this)?.create(BookingService::class.java)
+        if (serviceGet != null) {
+            viewModel.setGetService(serviceGet)
+        }
+        if (servicePost != null) {
+            viewModel.setPostService(servicePost)
         }
 
         sharedPref = PreferenceHelper(this)
@@ -35,10 +47,10 @@ class FlightDetailActivity : AppCompatActivity() {
         subsribeLiveData()
         viewModel.callGetApi(idFlight.toInt())
         val idUser = sharedPref.getString(Constants.KEY_ID)
-        Log.d("checking", " $idUser" )
-//        binding.btnBooking.setOnClickListener {
-//            viewModel.callPostApi()
-//        }
+        if (idUser != null) {
+            postBook(idUser.toInt())
+        }
+
     }
 
     private fun subsribeLiveData(){
@@ -63,8 +75,21 @@ class FlightDetailActivity : AppCompatActivity() {
             binding.tvPriceTotal.text = "$ " + ((child * it.data.child) + (adults * it.data.adult)).toDouble().toString()
             idAirlines = it.data.idAirlines
             totalPrice = (child * it.data.child) + (adults * it.data.adult)
-            Log.d("checking" , "${idAirlines} ${totalPrice}")
+
+            var data = it.data.facilities.split(", ")
+            recyclerFacility = FacilityAdapter(data)
+            binding.rvFacility.adapter = recyclerFacility
+            binding.rvFacility.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         })
+    }
+
+    private fun postBook(id: Int) {
+        binding.btnBooking.setOnClickListener {
+            viewModel.callPostApi(idAirlines!!, id, totalPrice!!,"Eticket Issued")
+            val intent = Intent(this, intentMain::class.java)
+            intent.putExtra("code", 1)
+            startActivity(intent)
+        }
     }
 
 }

@@ -19,4 +19,7 @@
     <color name="colorLightGrey">#F0F0F0</color>
     <color name="colorRed">#F24545</color>
     <color name="colorOrange">#FF7F23</color>
+    <color name="colorGreen1">#6DDA6B</color>
+    <color name="colorPurple1">#7861D7</color>
+    <color name="colorOrange1">#E45D32</color>
 </resources>

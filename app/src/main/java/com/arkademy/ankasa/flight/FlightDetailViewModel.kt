@@ -2,8 +2,8 @@ package com.arkademy.ankasa.flight
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.arkademy.ankasa.utils.api.response.PostBookingResponse
 import com.arkademy.ankasa.utils.api.response.getFlightByIdResponse
-import com.arkademy.ankasa.utils.api.response.postBookingResponse
 import com.arkademy.ankasa.utils.api.services.BookingService
 import com.arkademy.ankasa.utils.api.services.flightApiService
 import kotlinx.coroutines.*
@@ -46,12 +46,12 @@ class FlightDetailViewModel : ViewModel(), CoroutineScope {
         launch {
             val response = withContext(Dispatchers.IO) {
                 try {
-                    servicePost.postBooking(idAirlines, idUser, total, status)
+                        servicePost.postBooking(idAirlines, idUser, total, status)
                 } catch (e: Throwable){
                     e.printStackTrace()
                 }
             }
-            isBookedLiveData.value = response is postBookingResponse
+            isBookedLiveData.value = response is PostBookingResponse
         }
     }
 }

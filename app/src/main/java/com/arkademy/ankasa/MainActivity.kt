@@ -33,11 +33,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun currentNavigation(fragment: Fragment) : Boolean {
+    fun currentNavigation(fragment: Fragment) : Boolean {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.container, fragment)
                 .commit()
         }
         return true
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (intent.getIntExtra("code", 0) == 1) {
+            currentNavigation(BookingFragment())
+        } else {
+            currentNavigation(ExploreFragment())
+        }
     }
 }
