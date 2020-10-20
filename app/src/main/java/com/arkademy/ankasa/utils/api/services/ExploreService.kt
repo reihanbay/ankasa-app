@@ -1,4 +1,4 @@
-package com.arkademy.ankasa.utils.api
+package com.arkademy.ankasa.utils.api.services
 
 import com.arkademy.ankasa.dashboard.explore.LocationResponse
 import com.arkademy.ankasa.dashboard.explore.TopDestinationResponse

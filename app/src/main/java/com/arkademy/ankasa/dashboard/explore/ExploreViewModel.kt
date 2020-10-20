@@ -1,12 +1,10 @@
 package com.arkademy.ankasa.dashboard.explore
 
-import android.content.Context
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arkademy.ankasa.utils.api.ApiClient
-import com.arkademy.ankasa.utils.api.ExploreService
+import com.arkademy.ankasa.utils.api.services.ExploreService
 import kotlinx.coroutines.launch
 import retrofit2.Response
 

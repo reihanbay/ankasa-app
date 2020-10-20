@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ItemRecyclerFlightBinding
 
-class SearchResultAdapter(var items: ArrayList<flightModel>, val listener: onClickViewListener) :
+class SearchResultAdapter(val child: Int, val adults: Int, var items: ArrayList<flightModel>, val listener: onClickViewListener) :
     RecyclerView.Adapter<SearchResultAdapter.searchResultViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): searchResultViewHolder {
@@ -38,7 +38,7 @@ class SearchResultAdapter(var items: ArrayList<flightModel>, val listener: onCli
         holder.binding.tvValueTerminal.text = item.terminal
         holder.binding.tvValueGate.text = item.gate
         holder.binding.tvPlaneFlight.text = item.flight
-        holder.binding.tvPrice.text = "$ ${(item.priceAdults * item.priceChild).toDouble()}"
+        holder.binding.tvPrice.text = "$ ${((adults * item.priceAdults) + (child * item.priceChild)).toDouble()}"
         holder.binding.containerRecycler.setOnClickListener {
             listener.onClick(item.flight)
         }

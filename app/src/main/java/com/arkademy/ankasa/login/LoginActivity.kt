@@ -88,10 +88,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this, ForgotPassActivity::class.java)
                 startActivity(intent)
             }
-            binding.btnLogin -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
         }
     }
 }
