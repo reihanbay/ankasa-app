@@ -21,7 +21,7 @@ interface ProfileAPIService {
 
     @Multipart
     @PUT("customer/{id}")
-    fun updateProfile(@Path("id") idCustomer: String?,
+    fun updateProfile(@Path("id") id: String?,
                       @Part("id_user") idUser: RequestBody,
                       @Part("id_routes") idRoutes: RequestBody,
                       @Part("username") userName: RequestBody,

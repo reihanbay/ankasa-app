@@ -21,11 +21,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ActivityFormProfileBinding
-<<<<<<< HEAD
 import com.arkademy.ankasa.forgot.ForgotPassActivity
+import com.arkademy.ankasa.login.LoginActivity
 import com.arkademy.ankasa.register.RegisterViewModel
-=======
->>>>>>> 95e014e6cd84196250a34df0d8d184dda9481aa7
 import com.arkademy.ankasa.route.RouteApiService
 import com.arkademy.ankasa.route.RouteModel
 import com.arkademy.ankasa.utils.api.ApiClient
@@ -71,21 +69,6 @@ class FormProfileActivity : AppCompatActivity() {
             viewModel.setRouteService(serviceRoute)
         }
 
-        binding.btnSave.setOnClickListener {
-            startActivity(Intent(this, ForgotPassActivity::class.java))
-
-            val idUser = sharedpref.getString(Constants.KEY_ID)
-            viewModel.callUpdateProfile(
-                createPartFromString("6"),
-                createPartFromString("5"),
-                createPartFromString("dinanadi"),
-                createPartFromString("0888888"),
-                createPartFromString("purwodadi"),
-                createPartFromString("1000"),
-                img
-            )
-        }
-
             viewModel.initSpinnerLoc()
             setUpView()
             setUpListener()
@@ -96,25 +79,15 @@ class FormProfileActivity : AppCompatActivity() {
 
     private fun setUpView() {
         val register = sharedpref.getBoolean(Constants.PREF_REGISTER)
-        val submit = sharedpref.getBoolean(Constants.PREF_SUBMIT)
 
         when (register) {
             true -> {
-//                if (submit == false) {
                     binding.btnSave.visibility = View.GONE
                     binding.btnSubmit.visibility = View.VISIBLE
-//                }
             }
             else -> {
-//                if (submit == true) {
                     binding.btnSave.visibility = View.VISIBLE
                     binding.btnSubmit.visibility = View.GONE
-//                }
-//                else {
-//                    binding.btnSave.visibility = View.VISIBLE
-//                    binding.btnSubmit.visibility = View.GONE
-//                }
-
             }
         }
     }
@@ -144,16 +117,28 @@ class FormProfileActivity : AppCompatActivity() {
                 pickImgGallery()
             }
         }
-
+        binding.btnSave.setOnClickListener {
+            Toast.makeText(this, "Profile Update", Toast.LENGTH_SHORT).show()
+            val idUser = sharedpref.getString(Constants.KEY_ID)
+            viewModel.callUpdateProfile(
+                createPartFromString("${idUser}"),
+                createPartFromString(selectedLoc),
+                createPartFromString(binding.etProfileUsername.text.toString()),
+                createPartFromString(binding.etProfilePhone.text.toString()),
+                createPartFromString(binding.etProfileAdress.text.toString()),
+                createPartFromString(binding.etProfilePostCode.text.toString()),
+                img
+            )
+        }
     }
-
-
 
     private fun subcribeLiveData(){
         viewModel.isFormProfile.observe(this, Observer {
             if (it) {
                 sharedpref.putBoolean(Constants.PREF_SUBMIT, true)
                 Toast.makeText(this, "Profile Data Sent!", Toast.LENGTH_SHORT).show()
+                sharedpref.clear()
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
             else {

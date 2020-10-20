@@ -97,14 +97,14 @@ class LoginActivity : AppCompatActivity() {
             if (it) {
 
             }
-<<<<<<< HEAD
+
             else {
                 Toast.makeText(this, "Fill The Blank!", Toast.LENGTH_SHORT).show()
             }
         })
-=======
+
         }
->>>>>>> 95e014e6cd84196250a34df0d8d184dda9481aa7
+
     }
 
 //    override fun onClick(v: View?) {
@@ -119,4 +119,3 @@ class LoginActivity : AppCompatActivity() {
 //            }
 //        }
 //    }
-}
