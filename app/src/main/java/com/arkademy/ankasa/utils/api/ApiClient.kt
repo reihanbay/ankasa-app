@@ -47,9 +47,9 @@ class ApiClient {
                         .Builder()
                         .addInterceptor(provideHttpLoggingInterceptor())
                         .addInterceptor(HeaderInterceptor(mContext!!))
-                        .connectTimeout(1, TimeUnit.MINUTES)
-                        .readTimeout(1, TimeUnit.MINUTES)
-                        .writeTimeout(1, TimeUnit.MINUTES)
+                        .connectTimeout(1, TimeUnit.HOURS)
+                        .readTimeout(1, TimeUnit.HOURS)
+                        .writeTimeout(1, TimeUnit.HOURS)
                         .build()
 
                 retrofit = Retrofit.Builder()
@@ -61,7 +61,7 @@ class ApiClient {
             return retrofit
         }
 
-        fun getApiClient(mContext: Context?): Retrofit? {
+        fun getApiClient(): Retrofit? {
             retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
