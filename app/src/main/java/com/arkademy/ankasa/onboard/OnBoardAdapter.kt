@@ -14,7 +14,7 @@ class OnBoardAdapter(private val onBoardList: ArrayList<OnBoardModel>): Recycler
         fun bind(listOnBoard: OnBoardModel){
             with(itemView){
                 iv_on_board.setImageResource(listOnBoard.image)
-                tv_onboard_title.text = listOnBoard.title
+                tv_onboard_title.text = listOnBoard.title.capitalize()
                 tv_on_board_desc.text = listOnBoard.description
             }
         }

@@ -11,26 +11,22 @@ interface ProfileAPIService {
 
     @Multipart
     @POST("customer")
-    fun postProfile(@Part("id_user") id_user: RequestBody?,
-                    @Part("id_routes") id_routes: RequestBody,
-                    @Part("username") username: RequestBody,
-                    @Part("phone")  phone: RequestBody,
-                    @Part("address") address : RequestBody,
-                    @Part("post_code") post_code: RequestBody,
-                    @Part image: MultipartBody.Part? ) : retrofit2.Call<FormProfileResponse>
+    fun postProfile(@Part("id_user") idUser: RequestBody,
+    @Part("id_routes") idRoutes: RequestBody,
+    @Part("username") userName: RequestBody,
+    @Part("phone") phone: RequestBody,
+    @Part("address") address: RequestBody,
+    @Part("post_code") postCode: RequestBody,
+    @Part image: MultipartBody.Part?) : retrofit2.Call<FormProfileResponse>
 
     @Multipart
     @PUT("customer/{id}")
-    fun putProfile( @Path("id") id: String?,
-                    @Part("id_user") id_user: RequestBody,
-                    @Part("id_routes") id_routes: RequestBody,
-                    @Part("username") username: RequestBody,
-                    @Part("phone")  phone: RequestBody,
-                    @Part("address") address : RequestBody,
-                    @Part("post_code") post_code: RequestBody,
-                    @Part image: MultipartBody.Part? ) : retrofit2.Call<Void>
-
-
-
-
+    fun updateProfile(@Path("id") id: String?,
+                      @Part("id_user") idUser: RequestBody,
+                      @Part("id_routes") idRoutes: RequestBody,
+                      @Part("username") userName: RequestBody,
+                      @Part("phone") phone: RequestBody,
+                      @Part("address") address: RequestBody,
+                      @Part("post_code") postCode: RequestBody,
+                      @Part image: MultipartBody.Part?) : retrofit2.Call<Void>
 }

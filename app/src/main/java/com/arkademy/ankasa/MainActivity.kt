@@ -8,7 +8,6 @@ import com.arkademy.ankasa.dashboard.explore.ExploreFragment
 import com.arkademy.ankasa.profile.ProfileFragment
 import com.arkademy.ankasa.dashboard.booking.BookingFragment
 import com.arkademy.ankasa.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -19,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val booking = BookingFragment()
         val explore = ExploreFragment()
         val profile = ProfileFragment()
-        val menu = bottom_navigation.menu
+        val menu = binding.bottomNavigation.menu
         menu.findItem(R.id.ic_explore).isChecked = true
 
         currentNavigation(explore)

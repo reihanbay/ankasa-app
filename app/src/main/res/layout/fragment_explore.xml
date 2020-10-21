@@ -7,126 +7,118 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        tools:context=".dashboard.explore.ExploreFragment">
-
-        <TextView
-            android:id="@+id/tv_explore"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Explore"
-            android:textAllCaps="false"
-            android:textColor="@color/colorHeader1"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.064"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023" />
+            android:paddingBottom="10dp"
+            tools:context=".dashboard.explore.ExploreFragment">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_btnnotifications"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_explore"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.922"
-            app:layout_constraintStart_toEndOf="@+id/tv_explore"
-            app:layout_constraintTop_toTopOf="@+id/tv_explore" />
+            <TextView
+                android:id="@+id/tv_explore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Explore"
+                android:textAllCaps="false"
+                android:textColor="@color/colorHeader1"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:layout_marginVertical="25dp"
+                android:layout_marginHorizontal="28dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                 />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_message"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintHorizontal_bias="0.878"
-            app:layout_constraintStart_toEndOf="@+id/tv_explore"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.0" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_btnnotifications"
+                android:layout_marginHorizontal="28dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_explore"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_explore" />
 
-        <SearchView
-            android:id="@+id/search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorSearch"
-            android:queryHint="Where you want to go?"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_explore"
-            app:layout_constraintTop_toBottomOf="@+id/tv_explore" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_message"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                />
 
-        <TextView
-            android:id="@+id/tv_trending_destination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Trending destinations"
-            android:textColor="@color/colorHeader1"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/search"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/search"
-            app:layout_constraintTop_toBottomOf="@+id/search" />
+            <SearchView
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorSearch"
+                android:queryHint="Where you want to go?"
+                android:layout_marginHorizontal="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_explore" />
 
-        <TextView
-            android:id="@+id/tv_view_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:text="View all"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_trending_destination"
-            app:layout_constraintEnd_toEndOf="@+id/search"
-            app:layout_constraintHorizontal_bias="0.99"
-            app:layout_constraintStart_toEndOf="@+id/tv_trending_destination"
-            app:layout_constraintTop_toTopOf="@+id/tv_trending_destination"
-            app:layout_constraintVertical_bias="1.0" />
+            <TextView
+                android:id="@+id/tv_trending_destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Trending destinations"
+                android:textColor="@color/colorHeader1"
+                android:textSize="18sp"
+                android:layout_marginHorizontal="28dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_trending_destination"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_view_all"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_trending_destination"
-            app:layout_constraintTop_toBottomOf="@+id/tv_trending_destination" />
+            <TextView
+                android:id="@+id/tv_view_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="View all"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="28dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_trending_destination"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_trending_destination"
+                />
 
-        <TextView
-            android:id="@+id/tv_top_destination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Top 10 Destinations"
-            android:textColor="@color/colorHeader1"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/rv_trending_destination"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/rv_trending_destination"
-            app:layout_constraintTop_toBottomOf="@+id/rv_trending_destination" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_trending_destination"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_view_all"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_trending_destination"
+                app:layout_constraintTop_toBottomOf="@+id/tv_trending_destination" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_top_destination"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/rv_trending_destination"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/rv_trending_destination"
-            app:layout_constraintTop_toBottomOf="@+id/tv_top_destination" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_top_destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Top 10 Destinations"
+                android:textColor="@color/colorHeader1"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/rv_trending_destination"
+                app:layout_constraintTop_toBottomOf="@+id/rv_trending_destination" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_top_destination"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/rv_trending_destination"
+                app:layout_constraintStart_toStartOf="@+id/rv_trending_destination"
+                app:layout_constraintTop_toBottomOf="@+id/tv_top_destination" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

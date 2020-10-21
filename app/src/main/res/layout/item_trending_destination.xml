@@ -12,26 +12,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="10dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="5dp">
+        android:paddingHorizontal="13dp"
+        android:paddingVertical="15dp">
 
         <com.joooonho.SelectableRoundedImageView
             android:id="@+id/iv_trending_destination"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="190dp"
             android:scaleType="centerCrop"
             android:src="@drawable/imagesearch"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.029"
-            app:sriv_left_bottom_corner_radius="40dp"
-            app:sriv_left_top_corner_radius="40dp"
-            app:sriv_right_bottom_corner_radius="40dp"
-            app:sriv_right_top_corner_radius="40dp" />
+            app:sriv_left_bottom_corner_radius="20dp"
+            app:sriv_left_top_corner_radius="20dp"
+            app:sriv_right_bottom_corner_radius="20dp"
+            app:sriv_right_top_corner_radius="20dp" />
 
         <TextView
             android:id="@+id/tv_trending_city"
@@ -43,7 +39,6 @@
             android:textColor="@android:color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/iv_trending_destination"
-            app:layout_constraintHorizontal_bias="0.081"
             app:layout_constraintStart_toStartOf="@+id/iv_trending_destination"
             app:layout_constraintTop_toBottomOf="@+id/iv_trending_destination" />
 
@@ -60,7 +55,13 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_trending_city"
             app:layout_constraintTop_toBottomOf="@+id/tv_trending_city" />
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_trending_country"
+            app:layout_constraintBottom_toBottomOf="@id/tv_trending_country"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

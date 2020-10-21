@@ -22,6 +22,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var sharePreferencesHelper: PreferenceHelper
     private lateinit var viewModel: RegisterViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
@@ -36,7 +37,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             viewModel.setRegisterService(service)
         }
 
-        binding.btnSignIn.setOnClickListener(this)
+        binding.btnSignIn.setOnClickListener { startActivity(Intent(this@RegisterActivity, LoginActivity::class.java)) }
         binding.btnSignUp.setOnClickListener{
             viewModel.callApiRegister(
                 binding.etFullname.text.toString(),
@@ -44,7 +45,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 binding.etPassword.text.toString()
             )
         }
-
         subscribeLiveData()
     }
 
@@ -52,7 +52,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private fun subscribeLiveData() {
         viewModel.isRegisterLiveData.observe(this, Observer {
             Log.d("register", "$it")
-
             if (it) {
                 Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LoginActivity::class.java)
@@ -62,13 +61,20 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, "Register Failed", Toast.LENGTH_SHORT).show()
             }
         })
+        viewModel.isToast.observe(this, Observer {
+            if (it){
+
+            }
+            else {
+                Toast.makeText(this, "Fill The Blank", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
-    override fun onClick(p0: View?) {
+    override fun onClick(v: View?) {
         binding.apply {
-            when (p0) {
+            when (v) {
                 btnSignIn -> {startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))}
-                btnSignUp -> {startActivity(Intent(this@RegisterActivity, FormProfileActivity::class.java))}
             }
         }
     }

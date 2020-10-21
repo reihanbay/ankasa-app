@@ -12,6 +12,7 @@ import kotlin.coroutines.CoroutineContext
 class RegisterViewModel: ViewModel(), CoroutineScope {
 
     val isRegisterLiveData = MutableLiveData<Boolean>()
+    val isToast = MutableLiveData<Boolean>()
 
     private lateinit var service: AuthApiService
     private lateinit var sharepref: PreferenceHelper
@@ -42,8 +43,15 @@ class RegisterViewModel: ViewModel(), CoroutineScope {
             }
             Log.d("response", "$response")
             if (response is RegisterResponse) {
-                sharepref.putBoolean(Constants.PREF_REGISTER, true)
-                isRegisterLiveData.value = response.message == "Success Register Account!"
+                if(fullname.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()){
+                    isToast.value = true
+                    sharepref.putBoolean(Constants.PREF_REGISTER, true)
+                    isRegisterLiveData.value = response.message == "Success Register Account!"
+                }
+                else {
+                    isToast.value = false
+                }
+
             }
         }
     }

@@ -92,4 +92,5 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         rv_top_destination.layoutManager =
             LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
     }
+
 }

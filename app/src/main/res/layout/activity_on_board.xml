@@ -27,35 +27,49 @@
             android:id="@+id/vp_indicator"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:ci_drawable="@color/colorAccentCustom"
-            app:ci_drawable_unselected="@color/colorOnBoardIndicatorUnSelected"
+            app:ci_drawable="@drawable/btn_primary"
+            app:ci_drawable_unselected="@drawable/item_dots"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vp_on_board" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_create_account"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+
+        <FrameLayout
+            android:id="@+id/container_btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:fontFamily="@font/poppins_bold"
-            android:gravity="center"
-            android:paddingVertical="10dp"
-            android:text="Create My Account"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:background="@drawable/btn_primary"
-            app:backgroundTint="@color/colorAccentCustom"
-            app:cornerRadius="10dp"
-            app:elevation="10dp"
+            android:layout_marginTop="27dp"
             app:layout_constraintEnd_toEndOf="@+id/vp_on_board"
-            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vp_indicator" />
+            app:layout_constraintTop_toBottomOf="@+id/vp_indicator">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_create_account"
+                android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="Create My Account"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@drawable/btn_primary"
+                app:backgroundTint="@color/colorAccentCustom"
+                app:cornerRadius="10dp"
+                app:elevation="10dp"
+                 />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="6dp"
+                android:alpha="0.18"
+                android:background="@drawable/btn_primary"
+                android:backgroundTint="@color/colorPrimary"/>
+        </FrameLayout>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign_in"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -72,9 +86,8 @@
             app:cornerRadius="10dp"
             android:paddingVertical="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_create_account"
+            app:layout_constraintTop_toBottomOf="@+id/container_btn_create"
             app:strokeColor="@color/colorPrimary" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

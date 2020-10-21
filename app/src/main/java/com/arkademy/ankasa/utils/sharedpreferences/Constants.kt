@@ -12,5 +12,6 @@ class Constants {
         val PREF_PASSWORD = "PREF_PASSWORD"
         val PREF_REGISTER = "PREF_REGISTER"
         val PREF_CUSTOMER = "PREF_CUSTOMER"
+        val PREF_SUBMIT = "PREF_SUBMIT"
     }
 }
