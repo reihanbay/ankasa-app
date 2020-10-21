@@ -59,12 +59,12 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (sharepref.getBoolean(Constants.PREF_IS_LOGIN)!!) {
-            finish()
-        }
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        if (sharepref.getBoolean(Constants.PREF_IS_LOGIN)!!) {
+//            finish()
+//        }
+//    }
 
     private fun subscribeLiveData() {
         viewModel.isLoginLiveData.observe(this, Observer {

@@ -7,14 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.booking.DetailBookingActivity
 import com.arkademy.ankasa.utils.sharedpreferences.Constants
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
-import kotlinx.android.synthetic.main.activity_detail_booking.*
 import kotlinx.android.synthetic.main.fragment_booking.*
 
 class BookingFragment : Fragment() {

@@ -23,16 +23,16 @@
         <activity android:name=".flight.SearchFlightActivity" />
         <activity android:name=".forgot.ForgotPassActivity" />
         <activity android:name=".register.RegisterActivity" />
-        <activity android:name=".onboard.OnBoardActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity" />
+        <activity android:name=".splash.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name=".onboard.OnBoardActivity">
 
         </activity>
     </application>

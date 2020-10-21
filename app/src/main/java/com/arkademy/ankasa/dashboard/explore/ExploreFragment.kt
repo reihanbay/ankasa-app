@@ -1,5 +1,6 @@
 package com.arkademy.ankasa.dashboard.explore
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.flight.SearchFlightActivity
+import com.arkademy.ankasa.utils.api.ApiClient
+import com.arkademy.ankasa.utils.api.services.ExploreService
 import kotlinx.android.synthetic.main.fragment_explore.*
 import kotlinx.android.synthetic.main.fragment_explore.view.*
 import kotlinx.android.synthetic.main.item_trending_destination.*
@@ -35,10 +38,16 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         super.onViewCreated(view, savedInstanceState)
         adapterTrending = TrendingAdapter()
         adapterTopDestinantion = TopDestinationAdapter()
+        viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
+        val service =
+            ApiClient.getApiClientToken(requireContext())?.create(ExploreService::class.java)
         setRecyclerView()
         setTopDestinationRecyclerView()
 
-        viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
+        if (service != null) {
+            viewModel.setExploreService(service)
+        }
+
         viewModel.getTrendingDestination()
         viewModel.getTopDestination()
         viewModel.getLocation()
@@ -50,21 +59,21 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             adapterTrending.setData(listTrending as ArrayList<TrendingModel>)
         })
 
-        viewModel.responseTopDestination.observe(this, { response ->
+        viewModel.responseTopDestination.observe(viewLifecycleOwner, { response ->
             val listTopDestination: List<TopDestinationModel> = response.body()!!.data.map {
                 TopDestinationModel(it.city, it.country, it.id_routes, it.image)
             }
             adapterTopDestinantion.setData(listTopDestination as ArrayList<TopDestinationModel>)
         })
 
-        viewModel.responseLocation.observe(this, { response ->
+        viewModel.responseLocation.observe(viewLifecycleOwner, { response ->
             val listLocation: List<LocationModel> = response.body()!!.data.map {
                 LocationModel(it.city, it.country, it.id_routes, it.image)
             }
             search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(p0: String?): Boolean {
                     val search = p0!!.capitalize()
-                    for(item in listLocation) {
+                    for (item in listLocation) {
                         if (item.city.capitalize() == search) {
                             val intent = Intent(activity, SearchFlightActivity::class.java)
                             intent.putExtra(INTENT_KEY, search)
@@ -92,5 +101,4 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         rv_top_destination.layoutManager =
             LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
     }
-
 }
