@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.FragmentProfileBinding
-import com.arkademy.ankasa.login.LoginActivity
+import com.arkademy.ankasa.onboard.OnBoardActivity
 import com.arkademy.ankasa.utils.api.ApiClient
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
 import com.squareup.picasso.Picasso
@@ -62,12 +62,11 @@ class ProfileFragment : Fragment() {
             .setTitle("Are You Sure?")
             .setPositiveButton("Log Out") { dialog: DialogInterface?, which: Int ->
                 sharePreferencesHelper.clear()
-                val intent=Intent(requireActivity(), LoginActivity::class.java)
+                val intent=Intent(requireActivity(), OnBoardActivity::class.java)
                 startActivity(intent)
             }
             .setNegativeButton("Cancel") {dialogInterface, i -> dialogInterface.dismiss()
             }
         dialog.show()
-
     }
 }

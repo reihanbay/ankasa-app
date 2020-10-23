@@ -42,11 +42,6 @@ class SearchResultAdapter(val child: Int, val adults: Int, var items: ArrayList<
         holder.binding.tvTimeFrom.text = item.timeFrom
         holder.binding.tvTimeDestination.text = item.timeDestination
         holder.binding.tvValueTerminal.text = item.terminal
-
-//        val gateSplit = item.codeFlight.split("")
-//        val gateCount = gateSplit.size
-//        var arr : ArrayList<String>
-//        for (gateCount)
         holder.binding.tvValueGate.text = item.codeFlight
         holder.binding.tvPlaneFlight.text = item.nameFlight
         holder.binding.tvPrice.text = "$ ${((adults * item.adult.toInt()) + (child * item.child.toInt())).toDouble()}"

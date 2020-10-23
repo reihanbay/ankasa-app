@@ -31,7 +31,6 @@ class BookingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_booking, container, false)
     }
 
@@ -47,7 +46,6 @@ class BookingFragment : Fragment() {
         setRecylerView()
         val idUser = sharedpref.getString(Constants.KEY_ID)!!.toInt()
         val bookingId = sharedpref.getString(Constants.PREF_CUSTOMER)
-        Log.d("bookingId", bookingId.toString())
 
         viewModel.getBookingUserById(idUser)
         viewModel.responseBookingUserById.observe(this, { response ->
@@ -57,11 +55,6 @@ class BookingFragment : Fragment() {
             adapter.setData(listBookingUser as ArrayList<BookingUserByIdModel>)
         })
 
-//        viewModel.getBookingDetail(5)
-//        viewModel.responseBookingDetail.observe(this, {response->
-//            val bookingDetail = response.body()?.data
-//            tv_passenger.text = bookingDetail?.fullname
-//        })
     }
 
     private fun setRecylerView() {

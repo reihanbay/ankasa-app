@@ -49,7 +49,7 @@ class OnBoardActivity : AppCompatActivity(), View.OnClickListener {
     override fun onStart() {
         super.onStart()
         sharedPref = PreferenceHelper(this)
-        if (sharedPref.getBoolean(Constants.PREF_IS_LOGIN) == true){
+        if (sharedPref.getBoolean(Constants.PREF_IS_LOGIN)!!){
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

@@ -45,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
                 binding.etPassword.text.toString()
             )
         }
-
         subscribeLiveData()
     }
 
@@ -62,14 +61,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (sharepref.getBoolean(Constants.PREF_IS_LOGIN)!!) {
+            moveIntent()
             finish()
         }
     }
 
     private fun subscribeLiveData() {
         viewModel.isLoginLiveData.observe(this, Observer {
-            Log.d("android1", "$it")
-
             if (it) {
                 Toast.makeText(this, "Login Succcess", Toast.LENGTH_SHORT).show()
                 moveIntent()

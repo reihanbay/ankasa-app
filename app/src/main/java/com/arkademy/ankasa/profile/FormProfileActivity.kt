@@ -13,7 +13,6 @@ import android.provider.MediaStore
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
@@ -21,9 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.arkademy.ankasa.R
 import com.arkademy.ankasa.databinding.ActivityFormProfileBinding
-import com.arkademy.ankasa.forgot.ForgotPassActivity
 import com.arkademy.ankasa.login.LoginActivity
-import com.arkademy.ankasa.register.RegisterViewModel
 import com.arkademy.ankasa.route.RouteApiService
 import com.arkademy.ankasa.route.RouteModel
 import com.arkademy.ankasa.utils.api.ApiClient
@@ -118,7 +115,7 @@ class FormProfileActivity : AppCompatActivity() {
             }
         }
         binding.btnSave.setOnClickListener {
-            Toast.makeText(this, "Profile Update", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, sharedpref.getString(Constants.KEY_ID).toString(), Toast.LENGTH_SHORT).show()
             val idUser = sharedpref.getString(Constants.KEY_ID)
             viewModel.callUpdateProfile(
                 createPartFromString("${idUser}"),

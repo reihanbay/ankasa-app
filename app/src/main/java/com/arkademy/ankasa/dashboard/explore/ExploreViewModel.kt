@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arkademy.ankasa.utils.api.ApiClient
 import com.arkademy.ankasa.utils.api.services.ExploreService
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 @Suppress("CAST_NEVER_SUCCEEDS")
@@ -17,7 +19,7 @@ class ExploreViewModel: ViewModel() {
 
     fun getTrendingDestination() {
         viewModelScope.launch {
-            val response = ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllTrendingDest()
+            val response = withContext(Dispatchers.IO) {ApiClient.getApiClientTokenNullEx(null)?.create(ExploreService::class.java)?.getAllTrendingDest()}
             if (response!!.isSuccessful) {
                 responseTrendingDestination.value = response
             } else {
