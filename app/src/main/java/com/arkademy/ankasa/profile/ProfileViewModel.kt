@@ -3,7 +3,6 @@ package com.arkademy.ankasa.profile
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.arkademy.ankasa.utils.api.AuthApiService
 import com.arkademy.ankasa.utils.sharedpreferences.Constants
 import com.arkademy.ankasa.utils.sharedpreferences.PreferenceHelper
 import kotlinx.coroutines.*

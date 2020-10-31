@@ -23,7 +23,6 @@
         <activity android:name=".flight.SearchFlightActivity" />
         <activity android:name=".forgot.ForgotPassActivity" />
         <activity android:name=".register.RegisterActivity" />
-        <activity android:name=".onboard.OnBoardActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".MainActivity" >
         </activity>
@@ -33,6 +32,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".onboard.OnBoardActivity">
         </activity>
     </application>
 
