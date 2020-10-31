@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            tools:context=".booking.DetailBookingActivity">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ic_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/ic_btnback"
+                    android:backgroundTint="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:text="@string/booking_pass"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="96dp"
+                    android:src="@drawable/ic_iconoption" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/bg_ticket"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorGrayLine"
+                    android:src="@drawable/ic_one_way"
+                    app:tint="@color/colorGrayDark" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_init_from"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="IDN"
+                        android:textColor="@color/colorHeader1"
+                        android:textSize="26dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:src="@drawable/ic_one_way"
+                        app:tint="@color/colorGrayDark2" />
+
+                    <TextView
+                        android:id="@+id/tv_init_destination"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="JPN"
+                        android:textColor="@color/colorHeader1"
+                        android:textSize="26dp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="154dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_ticket_issued"
+                    android:gravity="center"
+                    android:text="Ticket Issued"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="-8dp"
+                        android:background="@drawable/btn_primary" />
+
+                    <View
+                        android:layout_width="286dp"
+                        android:layout_gravity="center"
+                        android:layout_height="2dp"
+                        android:background="@drawable/dash_ticket" />
+
+                    <View
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="-8dp"
+                        android:background="@drawable/btn_primary" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginVertical="20dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="95dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="36dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Passenger"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_passenger"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Mike Kowalski"
+                                android:textColor="@color/colorGrayDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Departure"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_departure"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20 July 2020"
+                                android:textColor="@color/colorGrayDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Code"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_code"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="AB-221"
+                                android:textColor="@color/colorGrayDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Gate"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_gate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="221"
+                                android:textColor="@color/colorGrayDark" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="95dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="36dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Class"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_class"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Economoy"
+                                android:textColor="@color/colorGrayDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Time"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="12:33"
+                                android:textColor="@color/colorGrayDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Terminal"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_terminal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="A"
+                                android:textColor="@color/colorGrayDark" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Seat"
+                                android:textColor="@color/colorGrayText1" />
+
+                            <TextView
+                                android:id="@+id/tv_seat"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="21B"
+                                android:textColor="@color/colorGrayDark" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="-8dp"
+                        android:background="@drawable/btn_primary" />
+
+                    <View
+                        android:layout_width="286dp"
+                        android:layout_gravity="center"
+                        android:layout_height="2dp"
+                        android:background="@drawable/dash_ticket" />
+
+                    <View
+                        android:layout_width="25dp"
+                        android:layout_marginEnd="-8dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/btn_primary" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginHorizontal="36dp"
+                    android:layout_marginVertical="20dp"
+                    android:src="@drawable/barcode" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

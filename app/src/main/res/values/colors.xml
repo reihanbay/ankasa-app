@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#2395FF</color>
+    <color name="colorPrimaryAlpha">#4D2395FF</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccentCustom">#2395FF</color>
+    <color name="colorOnBoardIndicatorUnSelected">#C4C4C4</color>
+    <color name="colorSearch">#F5F5F5</color>
+    <color name="colorHeader1">#000</color>
+    <color name="colorGrayLine">#D8D8D8</color>
+    <color name="colorGrayLight">#C4C4C4</color>
+    <color name="colorGrayDark">#595959</color>
+    <color name="colorGrayDark2">#979797</color>
+    <color name="colorGrayDark3">#414141</color>
+    <color name="colorGrayDark4">#6B6B6B</color>
+    <color name="colorGrayText1">#A5A5A5</color>
+    <color name="colorTicketIssued">#4FCF4D</color>
+    <color name="colorLightGrey">#F0F0F0</color>
+    <color name="colorRed">#F24545</color>
+    <color name="colorOrange">#FF7F23</color>
+    <color name="colorGreen1">#6DDA6B</color>
+    <color name="colorPurple1">#7861D7</color>
+    <color name="colorOrange1">#E45D32</color>
 </resources>

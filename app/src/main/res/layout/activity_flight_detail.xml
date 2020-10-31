@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        tools:context=".flight.FlightDetailActivity">
+
+        <FrameLayout
+            android:id="@+id/fl_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/component_header"
+            android:backgroundTint="#F8F8F8"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/header_primary">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_plane_header" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:layout_marginTop="56dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/btn_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ic_btnback"
+                        android:backgroundTint="@android:color/white" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="28dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/btn_primary"
+                android:backgroundTint="@android:color/white"
+                android:elevation="15dp"
+                android:orientation="vertical"
+                android:paddingVertical="40dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_init_from"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IDN"
+                        android:textColor="@android:color/black"
+                        android:textSize="28dp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_time_from"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="12:33"
+                        android:textColor="@color/colorGrayDark2"
+                        android:textSize="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_init_from" />
+                    <LinearLayout
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tv_init_destination"
+                        app:layout_constraintStart_toStartOf="@id/tv_init_from"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_plane"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_booking_plane"
+                        app:tint="@color/colorGrayDark2" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_init_destination"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IDN"
+                        android:textColor="@android:color/black"
+                        android:textSize="28dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_time_destination"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="12:33"
+                        android:textColor="@color/colorGrayDark2"
+                        android:textSize="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_init_destination" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="25dp">
+
+                    <ImageView
+                        android:id="@+id/iv_flight"
+                        android:layout_width="75dp"
+                        android:layout_height="43dp"
+                        android:layout_alignParentStart="true"
+                        android:src="@drawable/maskapai" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star"
+                                app:tint="#FF7F23" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star"
+                                app:tint="#FF7F23" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star"
+                                app:tint="#FF7F23" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star"
+                                app:tint="#FF7F23" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="120k review"
+                            android:textAlignment="center"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_section1"
+                        android:layout_width="69.5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:text="Code"
+                            android:textColor="@color/colorGrayText1"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="AB-221"
+                            android:textColor="@color/colorGrayDark"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_section2"
+                        android:layout_width="69.5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/ll_section1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:text="Class"
+                            android:textColor="@color/colorGrayText1"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_value_class"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Economy"
+                            android:textColor="@color/colorGrayDark"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_section3"
+                        android:layout_width="69.5dp"
+                        android:layout_marginEnd="28dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/ll_section2"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:text="Terminal"
+                            android:textColor="@color/colorGrayText1"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_value_terminal"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="A"
+                            android:textColor="@color/colorGrayDark"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_section4"
+                        android:layout_width="69.5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_regular"
+                            android:text="Gate"
+                            android:textColor="@color/colorGrayText1"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_value_gate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="221"
+                            android:textColor="@color/colorGrayDark"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="20dp"
+                    android:background="@color/colorGrayLine" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_value_child"
+                        android:layout_alignParentStart="true"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/component_primary_transparent"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:paddingVertical="3dp"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_child"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_value_child"
+                        android:layout_marginHorizontal="16dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:gravity="center"
+                        android:text="Child"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_value_adults"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/component_primary_transparent"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_toLeftOf="@id/tv_adults"
+                        android:gravity="center"
+                        android:paddingVertical="3dp"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_adults"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:gravity="center"
+                        android:text="Adults"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+        <TextView
+            android:id="@+id/tv_header_facility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:textColor="@android:color/black"
+            android:text="Facilities"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintTop_toBottomOf="@id/fl_header"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_facility"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_facility"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+
+        <RelativeLayout
+            android:id="@+id/ll_total"
+            app:layout_constraintTop_toBottomOf="@id/rv_facility"
+            android:layout_marginTop="25dp"
+            android:layout_marginHorizontal="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/colorGrayDark"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Total you'll pay"/>
+            <TextView
+                android:id="@+id/tv_priceTotal"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/poppins_bold"
+                android:text="$ 0.00"/>
+        </RelativeLayout>
+        <FrameLayout
+            app:layout_constraintTop_toBottomOf="@id/ll_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:id="@+id/btn_booking"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/btn_primary"
+                android:text="@string/book"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="30dp"
+                android:alpha="0.18"
+                android:background="@drawable/btn_primary"
+                android:backgroundTint="@color/colorPrimary"/>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
