@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.ankasa.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_trending_destination.view.*
 
 class TrendingAdapter: RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>() {

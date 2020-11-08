@@ -75,9 +75,9 @@ class FormProfileActivity : AppCompatActivity() {
 
 
     private fun setUpView() {
-        val register = sharedpref.getBoolean(Constants.PREF_REGISTER)
-
-        when (register) {
+        val register = sharedpref.getBoolean(Constants.PREF_REGISTER)!!
+        val codeForm = intent.getBooleanExtra("form", false)
+        when (register || codeForm) {
             true -> {
                     binding.btnSave.visibility = View.GONE
                     binding.btnSubmit.visibility = View.VISIBLE

@@ -8,6 +8,8 @@ import retrofit2.http.*
 interface ProfileAPIService {
     @GET("customer/{id}")
     fun getProfile(@Path("id") id: String?) : retrofit2.Call<ProfileResponse>
+    @GET("customer/{id}")
+    suspend fun checkProfile(@Path("id") id: String?) : ProfileResponse
 
     @Multipart
     @POST("customer")

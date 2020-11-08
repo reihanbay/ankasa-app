@@ -52,14 +52,14 @@
 
             <SearchView
                 android:id="@+id/search"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorSearch"
+                android:elevation="1dp"
+                android:background="@drawable/bg_search"
                 android:queryHint="Where you want to go?"
-                android:layout_marginHorizontal="28dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/imageView"
+                app:layout_constraintStart_toStartOf="@id/tv_explore"
                 app:layout_constraintTop_toBottomOf="@+id/tv_explore" />
 
             <TextView
@@ -91,11 +91,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_trending_destination"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_view_all"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/tv_trending_destination"
                 app:layout_constraintTop_toBottomOf="@+id/tv_trending_destination" />
 
@@ -108,16 +107,16 @@
                 android:text="Top 10 Destinations"
                 android:textColor="@color/colorHeader1"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/rv_trending_destination"
+                app:layout_constraintStart_toStartOf="@+id/tv_trending_destination"
                 app:layout_constraintTop_toBottomOf="@+id/rv_trending_destination" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_top_destination"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/rv_trending_destination"
-                app:layout_constraintStart_toStartOf="@+id/rv_trending_destination"
+                app:layout_constraintEnd_toEndOf="@+id/tv_top_destination"
+                app:layout_constraintStart_toStartOf="@+id/tv_top_destination"
                 app:layout_constraintTop_toBottomOf="@+id/tv_top_destination" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -16,7 +16,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_on_board"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="430dp"
             android:layout_margin="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="27dp"
             app:layout_constraintEnd_toEndOf="@+id/vp_on_board"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vp_indicator">
