@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/ic_booking"
+        android:title="My Booking"
+        android:icon="@drawable/ic_mybook"/>
+    <item android:id="@+id/ic_explore"
+        android:icon="@drawable/ic_compas"
+        android:title="Explore" />
+    <item android:id="@+id/ic_profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_user"/>
+</menu>
